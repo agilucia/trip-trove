@@ -1,0 +1,26 @@
+{
+  "name": "trip-trove",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "13.3.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sass": "^1.62.1",
+    "sharp": "^0.32.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.5",
+    "@types/react-dom": "^18.2.3",
+    "eslint-config-upleveled": "^4.1.9",
+    "stylelint": "^15.6.1",
+    "stylelint-config-upleveled": "^1.0.2",
+    "typescript": "^5.0.4"
+  }
+}
