@@ -34,7 +34,11 @@ export default async function RootLayout(props: Props) {
         {props.children}
         <div>
           <Link href="/">HOME</Link>
+          <br />
           <Link href="/posts">POSTS</Link>
+          <br />
+          <Link href="/createposts">Create a new post</Link>
+          <br />
 
           {/* <Link href={`/profile/${user.username}`}>
             {user.username.charAt(0).toUpperCase() + user.username.slice(1)}
@@ -43,8 +47,10 @@ export default async function RootLayout(props: Props) {
           <Link href="/logout" prefetch={false}>
             logout
           </Link>
+          <br />
 
           <Link href="/register">register</Link>
+          <br />
 
           <Link href="/login">login</Link>
         </div>
