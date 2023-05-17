@@ -3,6 +3,7 @@ import { cookies } from 'next/headers';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { NextResponse } from 'next/server';
+import { getBioByUserId } from '../../../database/bios';
 import {
   getUserBySessionToken,
   getUserByUsername,
@@ -54,6 +55,8 @@ export default async function UserProfile(props: Props) {
     notFound();
   }
 
+  const bios = await getBioByUserId(user.id);
+
   return (
     <main>
       <div>
@@ -68,12 +71,19 @@ export default async function UserProfile(props: Props) {
             <p>
               <b>About me:</b>
             </p>
-            {/* <span>
+            <span>
               {bios.map((bio) => {
                 return <div key={`bio-${bio.userId}`}>{bio.content}</div>;
               })}
-            </span> */}
+            </span>
             <br />
+            {currentUser.id === user.id ? (
+              <Link href={`/profile/${user.username}/bioinfos`}>
+                Edit profile
+              </Link>
+            ) : (
+              ''
+            )}
           </div>
           {/* <h2 className="text-xl text-white ">My pictures</h2> */}
         </div>
