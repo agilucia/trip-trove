@@ -6,9 +6,9 @@ import LoginForm from './LoginForm';
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
-  title: 'BE BOULDER - Login',
+  title: 'TripTrove - Login',
   description:
-    'Log in to your account to be able to use all features of BE BOULDER.',
+    'Log in to your account to be able to use all features of TripTrove.',
   icons: {
     shortcut: '/favicon.svg',
   },
