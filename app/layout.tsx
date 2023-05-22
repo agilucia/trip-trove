@@ -31,29 +31,36 @@ export default async function RootLayout(props: Props) {
     <html lang="en">
       <head />
       <body>
+        <header>
+          <div>
+            <Link href="/">HOME</Link>
+            <br />
+            <Link href="/posts">POSTS</Link>
+            <br />
+            <Link href="/createposts">Create a new post</Link>
+            <br />
+            {user ? (
+              <>
+                <Link href={`/profile/${user.username}`}>
+                  {user.username.charAt(0).toUpperCase() +
+                    user.username.slice(1)}
+                </Link>
+                <br />
+                <Link href="/logout" prefetch={false}>
+                  logout
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link href="/register">register</Link>
+                <br />
+
+                <Link href="/login">login</Link>
+              </>
+            )}
+          </div>
+        </header>
         {props.children}
-        <div>
-          <Link href="/">HOME</Link>
-          <br />
-          <Link href="/posts">POSTS</Link>
-          <br />
-          <Link href="/createposts">Create a new post</Link>
-          <br />
-
-          {/* <Link href={`/profile/${user.username}`}>
-            {user.username.charAt(0).toUpperCase() + user.username.slice(1)}
-          </Link> */}
-
-          <Link href="/logout" prefetch={false}>
-            logout
-          </Link>
-          <br />
-
-          <Link href="/register">register</Link>
-          <br />
-
-          <Link href="/login">login</Link>
-        </div>
       </body>
     </html>
   );
