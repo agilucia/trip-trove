@@ -8,7 +8,6 @@ export type Post = {
   userName: string | null;
   country: string | null;
   city: string | null;
-  postingDate: Date;
 };
 
 // get a single post
@@ -22,6 +21,14 @@ export const getPostById = cache(async (id: number) => {
       id = ${id}
   `;
   return post;
+});
+
+// get all posts
+export const getPosts = cache(async () => {
+  const posts = await sql<Post[]>`
+  SELECT * FROM posts
+  `;
+  return posts;
 });
 
 // get all posts from a user
@@ -71,13 +78,12 @@ export const createPost = cache(
     userName: string,
     country: string,
     city: string,
-    postingDate: Date,
   ) => {
     const [post] = await sql<Post[]>`
     INSERT INTO posts
-      (content, user_id, user_name, country, city, posting_date)
+      (content, user_id, user_name, country, city)
     VALUES
-      (${content}, ${userId}, ${userName}, ${country}, ${city}, ${postingDate})
+      (${content}, ${userId}, ${userName}, ${country}, ${city})
     RETURNING *
   `;
     return post;

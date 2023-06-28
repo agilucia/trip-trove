@@ -9,7 +9,6 @@ const postType = z.object({
   userName: z.string(),
   country: z.string(),
   city: z.string(),
-  postingDate: z.date(),
 });
 
 export type PostsResponseBodyPost = { error: string } | { post: Post };
@@ -43,7 +42,6 @@ export async function POST(
     result.data.userName,
     result.data.country,
     result.data.city,
-    result.data.postingDate,
   );
 
   if (!newPost) {

@@ -14,6 +14,8 @@ export default function PostForm(props: Props) {
   const [posts, setPosts] = useState<Post[]>(props.posts);
   const [idOnEditMode, setIdOnEditMode] = useState<number>();
   const [content, setContent] = useState<string>('');
+  const [city, setCity] = useState<string>('');
+  const [country, setCountry] = useState<string>('');
   const [editContent, setEditContent] = useState<string>('');
   const [error, setError] = useState<string>();
 
@@ -23,6 +25,20 @@ export default function PostForm(props: Props) {
     <main>
       <label htmlFor="post">Share your stories</label>
       <div>
+        <input
+          id="city"
+          value={city}
+          placeholder="City"
+          onChange={(event) => setCity(event.currentTarget.value)}
+        />
+        <br />
+        <input
+          id="country"
+          value={country}
+          placeholder="Country"
+          onChange={(event) => setCountry(event.currentTarget.value)}
+        />
+        <br />
         <input
           id="post"
           value={content}
@@ -38,6 +54,8 @@ export default function PostForm(props: Props) {
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify({
+                city,
+                country,
                 content,
                 userName,
               }),
@@ -51,6 +69,8 @@ export default function PostForm(props: Props) {
             }
 
             setPosts([...posts, data.post]);
+            setCity('');
+            setCountry('');
             setContent('');
           }}
         >
