@@ -6,8 +6,7 @@ export async function up(sql) {
       user_id integer REFERENCES users (id) ON DELETE CASCADE,
       user_name varchar REFERENCES users (username) ON DELETE CASCADE,
       country varchar(100),
-      city varchar(100),
-      posting_date DATE NOT NULL DEFAULT CURRENT_DATE
+      city varchar(100)
     )
   `;
 }
